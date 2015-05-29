@@ -9,9 +9,15 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
 
 public class MainActivity extends FragmentActivity {
     GoogleMap map;
+
+    //a specific location to display
+    private static final LatLng GOLDEN_STATE_BRIDGE = new LatLng(37.828891,-122.485884);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +52,16 @@ public class MainActivity extends FragmentActivity {
             case R.id.menu_zoomout:
                 map.animateCamera(CameraUpdateFactory.zoomOut());
                 break;
+            case R.id.menu_gotolocation:
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(GOLDEN_STATE_BRIDGE)
+                        .zoom(20) //set the zoom
+                        .bearing(90) //set the orientation of the camera to east
+                        .tilt(30) //set the tilt of the camera to 30 degrees
+                        .build(); //creates a CameraPosition from the builder
+                map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                break;
         }
-        
+
         return true;
     }
 
