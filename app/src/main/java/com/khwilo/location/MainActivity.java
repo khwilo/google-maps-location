@@ -1,5 +1,6 @@
 package com.khwilo.location;
 
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -14,12 +15,14 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MainActivity extends FragmentActivity {
     GoogleMap map;
 
     //a specific location to display
     private static final LatLng GOLDEN_GATE_BRIDGE = new LatLng(37.828891,-122.485884);
+    private static final LatLng APPLE = new LatLng(37.3325004578, -122.03099823);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +70,8 @@ public class MainActivity extends FragmentActivity {
                 map.addMarker(new MarkerOptions()
                         .position(GOLDEN_GATE_BRIDGE)
                         .title("GOLDEN GATE BRIDGE")
-                        .snippet("San Francisco").icon(BitmapDescriptorFactory
-                                .fromResource(R.drawable.andr)));
+                        .snippet("San Francisco")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.andr)));
                 break;
             case R.id.menu_getcurrentlocation:
                 //get your current location and display a blue dot
@@ -79,6 +82,17 @@ public class MainActivity extends FragmentActivity {
                 LatLng myLatLng = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
                 CameraPosition myPostion = new CameraPosition.Builder().target(myLatLng).zoom(20).bearing(90).tilt(30).build();
                 map.animateCamera(CameraUpdateFactory.newCameraPosition(myPostion));
+                break;
+            case R.id.menu_lineconnecttwopoints:
+                //add a marker at Apple
+                map.addMarker(new MarkerOptions()
+                        .position(APPLE)
+                        .title("APPLE")
+                        .snippet("Cupertino")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.andr)));
+
+                //draw a line connecting Apple and Golden Gate Bridge
+                map.addPolyline(new PolylineOptions().add(GOLDEN_GATE_BRIDGE, APPLE).width(5).color(Color.RED));
                 break;
         }
 
