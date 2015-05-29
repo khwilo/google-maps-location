@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 
@@ -39,7 +40,14 @@ public class MainActivity extends FragmentActivity {
             case R.id.menu_showtraffic:
                 map.setTrafficEnabled(true);
                 break;
+            case R.id.menu_zoomin:
+                map.animateCamera(CameraUpdateFactory.zoomIn());
+                break;
+            case R.id.menu_zoomout:
+                map.animateCamera(CameraUpdateFactory.zoomOut());
+                break;
         }
+        
         return true;
     }
 
