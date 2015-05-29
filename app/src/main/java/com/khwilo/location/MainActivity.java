@@ -3,6 +3,7 @@ package com.khwilo.location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +26,17 @@ public class MainActivity extends FragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         //adds items to the action bar
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public  boolean onOptionsItemSelected(MenuItem item){
+
+        switch (item.getItemId()){
+            case R.id.menu_sethybrid:
+                map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                break;
+        }
         return true;
     }
 
