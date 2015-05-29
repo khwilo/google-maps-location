@@ -3,4 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_sethybrid"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Hybrid Mode" />
+    <item
+        android:id="@+id/menu_showtraffic"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Show Traffic" />
+    <item
+        android:id="@+id/menu_zoomin"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Zoom In"/>
+    <item
+        android:id="@+id/menu_zoomout"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Zoom Out"/>
+    <item
+        android:id="@+id/menu_gotolocation"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Go to a location"/>
+    <item
+        android:id="@+id/menu_addmarker"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Add a marker"/>
+    <item
+        android:id="@+id/menu_getcurrentlocation"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Get Current Location"/>
+    <item
+        android:id="@+id/menu_showcurrentlocation"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Show Current Location"/>
+    <item
+        android:id="@+id/menu_lineconnecttwopoints"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Line connecting 2 points"/>
+    <item
+        android:id="@+id/menu_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/menu_settings"/>
+
+
 </menu>
