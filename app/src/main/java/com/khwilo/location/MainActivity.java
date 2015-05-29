@@ -36,6 +36,9 @@ public class MainActivity extends FragmentActivity {
             case R.id.menu_sethybrid:
                 map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                 break;
+            case R.id.menu_showtraffic:
+                map.setTrafficEnabled(true);
+                break;
         }
         return true;
     }
