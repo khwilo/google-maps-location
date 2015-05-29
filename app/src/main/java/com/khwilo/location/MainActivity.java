@@ -9,14 +9,16 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends FragmentActivity {
     GoogleMap map;
 
     //a specific location to display
-    private static final LatLng GOLDEN_STATE_BRIDGE = new LatLng(37.828891,-122.485884);
+    private static final LatLng GOLDEN_GATE_BRIDGE = new LatLng(37.828891,-122.485884);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +55,19 @@ public class MainActivity extends FragmentActivity {
                 map.animateCamera(CameraUpdateFactory.zoomOut());
                 break;
             case R.id.menu_gotolocation:
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(GOLDEN_STATE_BRIDGE)
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(GOLDEN_GATE_BRIDGE)
                         .zoom(20) //set the zoom
                         .bearing(90) //set the orientation of the camera to east
                         .tilt(30) //set the tilt of the camera to 30 degrees
                         .build(); //creates a CameraPosition from the builder
                 map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                break;
+            case R.id.menu_addmarker:
+                map.addMarker(new MarkerOptions()
+                        .position(GOLDEN_GATE_BRIDGE)
+                        .title("GOLDEN GATE BRIDGE")
+                        .snippet("San Francisco").icon(BitmapDescriptorFactory
+                                .fromResource(R.drawable.andr)));
                 break;
         }
 
