@@ -1,5 +1,6 @@
 package com.khwilo.location;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -68,6 +69,16 @@ public class MainActivity extends FragmentActivity {
                         .title("GOLDEN GATE BRIDGE")
                         .snippet("San Francisco").icon(BitmapDescriptorFactory
                                 .fromResource(R.drawable.andr)));
+                break;
+            case R.id.menu_getcurrentlocation:
+                //get your current location and display a blue dot
+                map.setMyLocationEnabled(true);
+                break;
+            case R.id.menu_showcurrentlocation:
+                Location myLocation = map.getMyLocation();
+                LatLng myLatLng = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
+                CameraPosition myPostion = new CameraPosition.Builder().target(myLatLng).zoom(20).bearing(90).tilt(30).build();
+                map.animateCamera(CameraUpdateFactory.newCameraPosition(myPostion));
                 break;
         }
 
